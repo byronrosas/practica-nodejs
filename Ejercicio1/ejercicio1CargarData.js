@@ -33,7 +33,11 @@ exports.ejercicio1LoadDB = function (request, response) {
                             new_obj["location"] = valor;                          
                         }
                         // evita que latitud y longitud se coloquen en el nuevo objeto.
-                        if (clave_normalized !== "latitud" && clave_normalized !== "longitud") {                                                
+                        if (clave_normalized !== "latitud" && clave_normalized !== "longitud") {  
+                            
+                            //convertir precio a number 
+                            if(clave_normalized==="precio_por_metro" || clave_normalized==="precio") valor = Number(valor);                            
+
                             new_obj[clave_normalized] = valor;
                         }
                     } else {
