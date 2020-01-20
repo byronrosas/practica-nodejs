@@ -11,8 +11,8 @@ const { validarLatitud, validarLongitud } = require('../utils');
 exports.ejercicio4ProcesarData = (req, res) => {
     const dbobj = connectDB();
     // obtener params
-    const min = req.params.min;
-    const max = req.params.max;
+    const min = Number(req.params.min);
+    const max = Number(req.params.max);
     const nhabitaciones = req.params.nhabitaciones;
     const latitud = validarLatitud(Number(req.params.latitud));
     const longitud = validarLongitud(Number(req.params.longitud));
