@@ -3,16 +3,18 @@ function templateReportBase(data) {
     <h1>Reporte Ejercicio 4</h1>    
     `;
     const table = `
-        <table>
+        <table border=2>
             <tr>
                 <th>id</th>
                 <th>Titulo</th>
                 <th>Anunciante</th>
                 <th>Tipo</th>
                 <th>Precio</th>
+                <th>Longitud</th>
+                <th>Latitud</th>
             </tr>        
     `;
-    let contenido;
+    let contenido=``;
     data.forEach(element => {
         contenido += `
             <tr>
@@ -21,6 +23,8 @@ function templateReportBase(data) {
                 <th>${element.anunciante}</th>
                 <th>${element.tipo}</th>
                 <th>${element.precio}</th>
+                <th>${element.location.coordinates[0]}</th>
+                <th>${element.location.coordinates[1]}</th>
             </tr>`;
     });
     const endtable = `
