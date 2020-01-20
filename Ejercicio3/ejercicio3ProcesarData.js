@@ -3,8 +3,8 @@ const { connectDB, closeDB } = require('../db.js');
 exports.ejercicio3ProcesarData = (req, res) => {
     const dbobj = connectDB();
     // obtener params
-    const latitud = Number(req.params.latitud);
-    const longitud = Number(req.params.longitud);
+    const latitud = validarLatitud(Number(req.params.latitud));
+    const longitud = validarLongitud(Number(req.params.longitud));
     const distancia = Number(req.params.distancia);
     let query_geo = {};
     // query geo
@@ -35,4 +35,26 @@ exports.ejercicio3ProcesarData = (req, res) => {
     }).catch((err) => {
         res.status(500).json({ err });
     });
+}
+
+
+
+validarLatitud(latitud)
+{
+    if(latitud >= -90 && latitud <= 90)
+    {
+        return latitud;
+    }else{
+        return 0;   
+    }
+}
+
+validarLongitud(longitud)
+{
+    if(longitud >= -180 && longitud <= 180)
+    {
+        return longitud;
+    }else{
+        return 0;   
+    }
 }
