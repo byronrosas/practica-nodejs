@@ -1,18 +1,17 @@
 const { connectDB,closeDB } = require('../db.js');
 const { normalize } = require('../utils');
 const path = require('path');
-const file = path.join(__dirname,'/files/resource_accommodation.csv');
+
 
 
 const csvtojson = require("csvtojson"); // libreria convierte csv a un array de objetos json
 
 
 /* 
-    Función que carga los registros de un CSV a una coleccion de mongodb
-    parametros: 1 (ruta del archivo csv)
+    Función que carga los registros de un CSV a una coleccion de mongodb    
  */
-function ejercicio1LoadDB(path_file) {    
-    
+exports.ejercicio1LoadDB = function(req,res) {    
+    const path_file = path.join(__dirname,'/files/resource_accommodation.csv');
     const dbobj = connectDB();  
     
     csvtojson()//convertir CSV en array de objetos json
@@ -42,12 +41,11 @@ function ejercicio1LoadDB(path_file) {
                 // Ingresar documentos en la coleccion accommodation
                 db.collection("accommodation").insertMany(normalized_csv, (err, res) => {
                     if (err) throw err;
-                    console.log(`Total saved: ${res.insertedCount}`);                
+                    console.log(`Total saved: ${res.insertedCount}`);                                    
                     closeDB();
+                    res.status(200).json(res);
                 });
-            }).catch(err=>console.log(err));
+            }).catch(err=> res.status(500).json({err}) );
             
         });        
 }
-
-ejercicio1LoadDB(file);
