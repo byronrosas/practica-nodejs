@@ -17,4 +17,24 @@ function normalize(str) {
     return ret.join('');
 }
 
-module.exports = { normalize };
+function validarLatitud(latitud)
+{
+    if(latitud >= -90 && latitud <= 90)
+    {
+        return latitud;
+    }else{
+        return 0;   
+    }
+}
+
+function validarLongitud(longitud)
+{
+    if(longitud >= -180 && longitud <= 180)
+    {
+        return longitud;
+    }else{
+        return 0;   
+    }
+}
+
+module.exports = { normalize,validarLatitud,validarLongitud };

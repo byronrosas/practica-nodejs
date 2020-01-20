@@ -1,5 +1,5 @@
 const { connectDB, closeDB } = require('../db.js');
-
+const { validarLatitud, validarLongitud } = require('../utils');
 exports.ejercicio3ProcesarData = (req, res) => {
     const dbobj = connectDB();
     // obtener params
@@ -19,10 +19,10 @@ exports.ejercicio3ProcesarData = (req, res) => {
     // aggregate query
     let aggregation_query = [
         {
-            $match:query_geo            
+            $match: query_geo
         },
         {
-            $group: { _id: null, precio_promedio_metro: { $avg:"$precio_por_metro" }, precio_total_promedio: { $avg:"$precio" } } 
+            $group: { _id: null, precio_promedio_metro: { $avg: "$precio_por_metro" }, precio_total_promedio: { $avg: "$precio" } }
         }
     ];
 
@@ -39,22 +39,3 @@ exports.ejercicio3ProcesarData = (req, res) => {
 
 
 
-validarLatitud(latitud)
-{
-    if(latitud >= -90 && latitud <= 90)
-    {
-        return latitud;
-    }else{
-        return 0;   
-    }
-}
-
-validarLongitud(longitud)
-{
-    if(longitud >= -180 && longitud <= 180)
-    {
-        return longitud;
-    }else{
-        return 0;   
-    }
-}

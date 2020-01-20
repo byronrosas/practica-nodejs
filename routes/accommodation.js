@@ -15,5 +15,5 @@ router.get('/preciomin/:min?/preciomax/:max?/nhabitaciones/:nhabitaciones?',cont
 router.get('/cercanos/:longitud/:latitud/:distancia',controllerProcesarData.ejercicio3ProcesarData);
 
 /* GET Ejercicio 4 Reportes Data */
-router.get('/filtro/precio/:min?/:max?/:nhabitaciones?/coords/:longitud/:latitud/tipo/:tiporeporte',controllerReportesData.ejercicio4ProcesarData);
+router.get('/filtro/precio/:min?/:max?/:nhabitaciones?/coords/:longitud/:latitud/:distancia/tipo/:tiporeporte',controllerReportesData.ejercicio4ProcesarData);
 module.exports = router;

@@ -25,7 +25,7 @@ exports.ejercicio1LoadDB = function (request, response) {
                     if (obj.hasOwnProperty(clave)) {                        
                         let valor = obj[clave];
                         // normalizar el texto quitando acentos y ñ, convertir a minusculas y reemplazar espacios por _
-                        let clave_normalized = normalize(clave).toLowerCase().replace(/\s/g, "_");;
+                        let clave_normalized = normalize(clave).toLowerCase().replace(/\s/g, "_");
                         
                         //convertir a formato geoespacial 
                         if (!new_obj.hasOwnProperty("location")) {
