@@ -26,7 +26,9 @@ exports.ejercicio3ProcesarData = (req, res) => {
         }
     ];
 
+    // se abre una conexión BD
     dbobj.then(async (db) => {
+        // consulta a la base de datos
         db.collection("accommodation").aggregate(aggregation_query).toArray(function (err, result) {
             if (err) throw err;
             closeDB();

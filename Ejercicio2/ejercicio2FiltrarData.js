@@ -12,8 +12,9 @@ exports.ejercicio2FilterAccommodation = (req, res) => {
     if(nhabitaciones){
         query["habitaciones"] = nhabitaciones;
     }   
-
+    // se abre una conexión BD
     dbobj.then(async (db) => {
+        // consulta a la base de datos
         db.collection("accommodation").find(query).toArray(function (err, result) {
             if (err) throw err;            
             closeDB();

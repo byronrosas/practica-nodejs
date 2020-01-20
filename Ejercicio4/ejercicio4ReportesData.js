@@ -46,7 +46,9 @@ exports.ejercicio4ProcesarData = (req, res) => {
         ]
     };
 
+    // se abre una conexión BD
     dbobj.then(async (db) => {
+        // Consulta a la base de datos
         db.collection("accommodation").find(query).toArray((err, result) => {
             if (err) throw err;
 
@@ -87,10 +89,23 @@ exports.ejercicio4ProcesarData = (req, res) => {
 
 }
 
+/* 
+    crea un PDF
+    content: Template para el reporte pdf
+    path: Ruta donde se guardará el PDF
+    cb: callback
+*/
 function crearPDF(content, path, cb) {
     pdf.create(content).toFile(path, cb);
 }
 
+
+/* 
+    crea un CSV
+    csvWrite: se le pasa una instancia de la librería csvWrite, con la ruta y campos del archivo csv    
+    data: Datos para cargar el csv
+    cb:callback
+*/
 function crearCSV(csvWriter,data, cb) {
     csvWriter.writeRecords(data)      
         .then(cb);
