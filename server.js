@@ -3,10 +3,12 @@ const { connectDB } = require('./db.js');
 const app = express();
 
 const accommodationRoutes = require('./routes/accommodation');
-
+const indexRoutes = require('./routes/index');
 const port = process.env.PORT || 3000;
 
 //ROUTES
+app.use('/', indexRoutes);
+
 //accommodation routes
 app.use('/accommodation', accommodationRoutes);
 
