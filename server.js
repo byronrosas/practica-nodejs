@@ -4,7 +4,7 @@ const app = express();
 
 const accommodationRoutes = require('./routes/accommodation');
 
-const port = process.env.API_SERVER_PORT || 3000;
+const port = process.env.PORT || 3000;
 
 //ROUTES
 //accommodation routes
