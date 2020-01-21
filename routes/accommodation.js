@@ -5,6 +5,11 @@ var controllerFilter  = require('../Ejercicio2/ejercicio2FiltrarData');
 var controllerProcesarData  = require('../Ejercicio3/ejercicio3ProcesarData');
 var controllerReportesData  = require('../Ejercicio4/ejercicio4ReportesData');
 
+/* GET  API. */
+router.get('/', function(req, res, next) {
+    res.status(200).json({ name: 'API Accommodation',version:'1.0.0' });
+  });
+
 /* GET Ejercicio 1 CSV a Mongodb. */
 router.get('/csvToMongo',controllerLoad.ejercicio1LoadDB);
 
